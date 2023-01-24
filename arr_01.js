@@ -45,12 +45,12 @@ const TAGS = [  "html",
 let stack = [];
 
 // Modul: HTML-Synthese | Test
-// output(getHTML());
+output(getHTML());
 function getHTML() {
     let htmlStr = "";
 
     for (let i = 0; i < TAGS.length; i++) {
-        if (isOpenElement()) {
+        if (isOpenElement(TAGS[i])) {
             htmlStr += getElement(TAGS[i],"open");
         } else {
             htmlStr += getElement(TAGS[i],"close");
@@ -74,20 +74,19 @@ function getElement(tag,op) {
     }
 }
 
-output(isOpenElement(TAGS[0]));
-output(isOpenElement(TAGS[1]));
-output(isOpenElement(TAGS[2]));
-
+// output(isOpenElement(TAGS[0]));
+// output(isOpenElement(TAGS[1]));
+// output(isOpenElement(TAGS[2]));
 function isOpenElement(tag) {
     let cond = (tag != stack[stack.length -1]);
 
     if (cond) {
         stack.push(tag);
-        output(stack);
+        // output(stack);
         return true;
     } else {
         stack.pop();
-        output(stack);
+        // output(stack);
         return false; 
     }
 }
